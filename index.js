@@ -5,7 +5,9 @@ const cors = require("cors");
 const app = express();
 const path = require("path");
 const favicon = require("serve-favicon");
-app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
+
+console.log(path.join(__dirname, "favicon.ico"));
+app.use(favicon(path.join(__dirname, "favicon.ico")));
 
 require("dotenv").config({ path: "./.env" });
 const port = process.env.PORT || 5001;

@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const mongoose = require("mongoose");
-require("dotenv").config();
+require("dotenv").config("../.env");
 
 const mysqlDB = new Sequelize("bitcoin", "root", "password", {
   host: "localhost",

@@ -3,6 +3,8 @@ const { mysqlDB, mongoose } = require("./database/databases.js");
 const routes = require("./routes/routes.js");
 const cors = require("cors");
 const app = express();
+require("dotenv").config({ path: "./.env" });
+const port = process.env.PORT || 5001;
 
 (async () => {
   try {
@@ -30,4 +32,4 @@ app.get("/", (req, res) => {
   res.send("BTC server running!");
 });
 
-app.listen(5001, () => console.log("Server running at port 5001"));
+app.listen(port, () => console.log(`Server running at port ${port}`));

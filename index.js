@@ -11,14 +11,14 @@ app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 require("dotenv").config({ path: "./.env" });
 const port = process.env.PORT || 5001;
 
-(async () => {
-  try {
-    await mysqlDB.authenticate();
-    console.log("MySQL connected...");
-  } catch (error) {
-    console.error("Connection error:", error);
-  }
-})();
+// (async () => {
+//   try {
+//     await mysqlDB.authenticate();
+//     console.log("MySQL connected...");
+//   } catch (error) {
+//     console.error("Connection error:", error);
+//   }
+// })();
 
 (async () => {
   try {

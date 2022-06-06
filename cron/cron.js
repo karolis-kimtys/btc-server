@@ -16,6 +16,7 @@ const canvasRenderService = new ChartJSNodeCanvas(options);
 
 // BTC price and timestamp
 let prices = [];
+let priceData = [];
 let times = [];
 
 const con = mysql.createPool({
@@ -59,6 +60,7 @@ channel.subscribe(function (message) {
     moment(message.timestamp).format("HH"),
     moment(message.timestamp).format("HH00"),
   ]);
+  priceData.push(parseFloat(message.data));
   times.push(moment(message.timestamp).format("YYYY-MM-DD HH:mm:ss"));
 });
 
@@ -74,22 +76,22 @@ channel.subscribe(function (message) {
 // 	zeroHour INT(4) ZEROFILL UNSIGNED
 // );
 
-cron.schedule("*/5 * * * *", async () => {
+cron.schedule("*/5 * * * * *", async () => {
   let newPrices = prices;
   let newTimes = times;
   prices = [];
 
-  con.query(
-    `INSERT INTO data (price, timestamp, date, year, month, day, hour, zeroHour) VALUES ?`,
-    [newPrices],
-    function (err, rows, fields) {
-      console.log(
-        "Data saved to MySQL at",
-        moment().format("YYYY-MM-DD HH:mm:ss")
-      );
-      if (err) throw err;
-    }
-  );
+  // con.query(
+  //   `INSERT INTO data (price, timestamp, date, year, month, day, hour, zeroHour) VALUES ?`,
+  //   [newPrices],
+  //   function (err, rows, fields) {
+  //     console.log(
+  //       "Data saved to MySQL at",
+  //       moment().format("YYYY-MM-DD HH:mm:ss")
+  //     );
+  //     if (err) throw err;
+  //   }
+  // );
 
   let model;
 
@@ -103,7 +105,7 @@ cron.schedule("*/5 * * * *", async () => {
             label: `Bitcoin price USD - ${moment().format(
               "YYYY-MM-DD HH:mm:ss"
             )}`,
-            data: newPrices,
+            data: priceData,
             fill: false,
             lineTension: 0.2,
             backgroundColor: "rgba(75,192,192,0.4)",

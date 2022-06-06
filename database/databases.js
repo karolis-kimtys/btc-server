@@ -2,10 +2,15 @@ const Sequelize = require("sequelize");
 const mongoose = require("mongoose");
 require("dotenv").config("../.env");
 
-const mysqlDB = new Sequelize("bitcoin", "root", "password", {
-  host: "localhost",
-  dialect: "mysql",
-});
+const mysqlDB = new Sequelize(
+  process.env.SQL_DB,
+  process.env.SQL_USER,
+  process.env.SQL_PASSWORD,
+  {
+    host: process.env.SQL_HOST,
+    dialect: "mysql",
+  }
+);
 
 mongoose
   .connect(process.env.ATLAS_URI, {

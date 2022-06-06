@@ -16,7 +16,6 @@ mongoose
   .connect(process.env.ATLAS_URI, {
     ssl: true,
     useNewUrlParser: true,
-    // useCreateIndex: true,
     useUnifiedTopology: true,
   })
   .then((res) => {

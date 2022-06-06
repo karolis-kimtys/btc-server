@@ -74,7 +74,7 @@ channel.subscribe(function (message) {
 // 	zeroHour INT(4) ZEROFILL UNSIGNED
 // );
 
-cron.schedule("*/5 * * * * *", async () => {
+cron.schedule("*/5 * * * *", async () => {
   let newPrices = prices;
   let newTimes = times;
   prices = [];

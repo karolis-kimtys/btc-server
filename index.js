@@ -26,5 +26,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/", routes);
+app.get("/", (req, res) => {
+  res.send("BTC server running!");
+});
 
 app.listen(5001, () => console.log("Server running at port 5001"));

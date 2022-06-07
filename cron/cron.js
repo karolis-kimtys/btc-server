@@ -81,17 +81,17 @@ cron.schedule("*/5 * * * *", async () => {
   let newTimes = times;
   prices = [];
 
-  // con.query(
-  //   `INSERT INTO data (price, timestamp, date, year, month, day, hour, zeroHour) VALUES ?`,
-  //   [newPrices],
-  //   function (err, rows, fields) {
-  //     console.log(
-  //       "Data saved to MySQL at",
-  //       moment().format("YYYY-MM-DD HH:mm:ss")
-  //     );
-  //     if (err) throw err;
-  //   }
-  // );
+  con.query(
+    `INSERT INTO data (price, timestamp, date, year, month, day, hour, zeroHour) VALUES ?`,
+    [newPrices],
+    function (err, rows, fields) {
+      console.log(
+        "Data saved to MySQL at",
+        moment().format("YYYY-MM-DD HH:mm:ss")
+      );
+      if (err) throw err;
+    }
+  );
 
   let model;
 

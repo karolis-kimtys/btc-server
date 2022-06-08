@@ -8,9 +8,7 @@
     "npm": "8.5.5"
   },
   "scripts": {
-    "start": "node index.js",
-    "build": "serve -s build"
-
+    "start": "node index.js"
   },
   "author": "Karolis K",
   "license": "ISC",

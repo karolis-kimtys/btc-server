@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "16.15.0",
+    "npm": "8.5.5"
+  },
   "scripts": {
-    "start": "serve -s build",
+    "start": "node index.js",
+    "build": "serve -s build",
     "heroku-postbuild": "npm run build"
   },
   "author": "Karolis K",
